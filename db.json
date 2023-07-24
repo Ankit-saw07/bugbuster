@@ -1,0 +1,35 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "userData": [
+    {
+      "username": "ankit",
+      "email": "ankit@mail",
+      "password": "ankit@mail",
+      "id": 1
+    },
+    {
+      "username": "sai",
+      "email": "sai@mail",
+      "password": "sai@mail",
+      "id": 2
+    }
+  ]
+
+  
+}
