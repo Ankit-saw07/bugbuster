@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import {Disel} from "./Pages/Disel";
+import {Home} from "./Pages/Home"
 import {Products} from "./Pages/Products";
 import {Men} from "./Pages/Men";
 import {Women} from "./Pages/Women"
@@ -12,7 +12,7 @@ import { Signup } from "./Pages/Signup";
 export const AllRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Disel />}></Route>
+      <Route path="/" element={<Home />}></Route>
       <Route path="/Products" element={<Products />}></Route>
       <Route path="/Men" element={<Men />}></Route>
       <Route path="/Women" element={<Women />}></Route>
