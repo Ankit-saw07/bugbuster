@@ -1,6 +1,7 @@
 import { Box, Button, FormControl, FormLabel, HStack, Heading, Input, Text, VStack } from '@chakra-ui/react'
 import  {  useContext, useEffect, useState } from "react";
 import { userContext } from '../Context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Signup = () => {
@@ -15,6 +16,7 @@ export const Signup = () => {
     const [formInput, setFormInput]= useState(initialValues);
     const[formErrors, setFormErrors]= useState({});
     const[isSubmit, setIsSubmit]= useState(false);
+    let navigate= useNavigate();
     
     const handleChange=(e)=>{
         const{name,value}= e.target;
@@ -50,6 +52,9 @@ export const Signup = () => {
         return errors;
 
     }
+    const gotoLogin=()=>{
+        return(navigate("/login"));
+    }
 
     useEffect(()=>{
         async function handle(){
@@ -64,6 +69,7 @@ export const Signup = () => {
             else if(!check){
                 handleRegistration(formInput.username,formInput.email,formInput.password);
                 alert("SignUp successfull, Please login.");
+                return(navigate("/login"));
             }
             
         }
@@ -129,7 +135,7 @@ export const Signup = () => {
         <Text  color="red">{formErrors.cpassword}</Text>
         <HStack w={"full"} justifyContent={"space-between"}>
         <Button onClick={handleSubmit} rounded={"none"} colorScheme="red" w={["full","auto"]}>Sign Up</Button>
-        <Button variant={"link"} colorScheme='blue'>Already have an account?</Button>
+        <Button variant={"link"} colorScheme='blue' onClick={gotoLogin}>Already have an account?</Button>
         </HStack>
         </VStack>
         </VStack>
