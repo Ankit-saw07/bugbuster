@@ -1,56 +1,29 @@
 import { useEffect, useState } from "react";
 import { ProductCard } from "../Components/ProductCard";
-export const Products = ({cat}) => {
+export const Products = ({ cat }) => {
   const [dbdata, setData] = useState([]);
-  // const api = "";
+  const [loading,setLoading]=useState(true);
 
-  // const allData = async () => {
-  //   let res= await fetch('http://localhost:8080/data');
-  //   let datas = await res.json();
+  const allData = async () => {
+    let res = await fetch("http://localhost:3030/data");
+    let resp = await res.json();
 
-  //   setData(datas.data);
-  // };
-  // useEffect(() => {
-  //   allData();
-  // }, []);
+    if (cat === "men") {
+      setData(resp[0].men);
+    } else if (cat === "women") {
+      setData(resp[0].women);
+    } else {
+      setData(resp[0].kid);
+    }
+    // setLoading(false);
+  };
+
   useEffect(() => {
-    fetch("http://localhost:3030/data")
-      .then((res) => {
-        return res.json();
-      })
-      .then((resp) => {
-        // console.log(resp[0].women);
-        // console.log(resp);
-        setData(resp)
-        if(cat === "men"){
-          setData(resp[0].men)
-        }
-        else if(cat === "women"){
-          setData(resp[0].women)
-        }
-        else{
-          setData(resp[0].kid)
-        }
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    allData();
+    // setLoading(false);
   }, [cat]);
-
- 
-  return (
-    <div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4,1fr",
-          flexWrap: "wrap",
-        }}
-      >
-        {dbdata.map((el) => {
-          return <ProductCard {...el} />;
-        })}
-      </div>
-    </div>
-  );
+  // if(loading){
+  //   return [];
+  // }
+  return dbdata;
 };

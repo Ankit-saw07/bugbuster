@@ -18,20 +18,35 @@ import {
   Grid,
 } from "@chakra-ui/react";
 import { px } from "framer-motion";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 export const Home=()=>{
+  var settings = {
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  arrows:true,
+  };
+    
     return(
         <><><><><><><div className={StylesProvider.featuredImageWrapper}>
       <Image
         // width={1336}
         // height={591}
+        w={'100%'}
+        h={'auto'}
         fill
         priority
+        flexWrap={'wrap'}
 
         src="https://cdn.pixelbin.io/v2/black-bread-289bfa/qlNgW4/original/banner/1689920815320-635_5.webp?compress=true&q=1&w=100&h=100"
         alt="img" />
     </div>
       <div className="cardds">
-        <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
+        <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'
+         flexWrap={'wrap'} >
           <Card>
             <CardHeader>
               <Heading size='md'> FIND YOUR FIT</Heading>
@@ -113,8 +128,11 @@ export const Home=()=>{
         </SimpleGrid>
 
       </div></>
-      <div>
-        <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
+      <Box w={'80%'} h={400} alignItems={'center'} justifyContent={'space-around'} ml={150} >
+    
+  
+        <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(900px, 1fr))'>
+        <Slider {...settings}>
           <Card>
 
             <CardHeader>
@@ -192,11 +210,16 @@ export const Home=()=>{
                 MEN TOPWEARS
               </a>
             </CardFooter>
+            
           </Card>
+          </Slider>
 
-
+          
         </SimpleGrid>
-      </div></>
+    
+      </Box>
+      </>
+      
       <div>
         <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
           <Card>
