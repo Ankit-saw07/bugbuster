@@ -28,8 +28,12 @@
       "email": "sai@mail",
       "password": "sai@mail",
       "id": 2
+    },
+    {
+      "username": "link",
+      "email": "link@mail",
+      "password": "link@mail",
+      "id": 3
     }
   ]
-
-  
 }

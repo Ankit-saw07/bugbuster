@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { loginContext } from "../Context/LoginContext"
 import { Button, Box, Heading, Text, VStack, FormControl, FormLabel, Input, HStack, Checkbox } from "@chakra-ui/react";
 import { userContext } from "../Context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export const Login=()=>{
     const {isLogin,handleLogin}= useContext(loginContext);
@@ -14,6 +15,7 @@ export const Login=()=>{
     const[user, setUser]= useState(initialValue);
     const[formErrors, setFormErrors]= useState({});
     const[isSubmit, setIsSubmit]= useState(false);
+    let navigate= useNavigate();
     const handleChange=(e)=>{
         const{name,value}= e.target;
         setUser({...user,[name]: value})
@@ -34,6 +36,10 @@ export const Login=()=>{
             error.password="Please enter password";
         }
         return error;
+    }
+
+    const gotoSignup=()=>{
+        return(navigate("/signup"));
     }
 
     useEffect(()=>{
@@ -96,7 +102,7 @@ export const Login=()=>{
         </HStack>
         <HStack w={"full"} justify={"space-between"}>
         <Button onClick={handleSubmit} rounded={"none"} colorScheme="red" w={["full","auto"]}>Login</Button>
-        <Button  variant={"link"} colorScheme="blue">Create an account.</Button>
+        <Button  variant={"link"} colorScheme="blue" onClick={gotoSignup}>Create an account.</Button>
         </HStack>
         </VStack>
         </Box> : 
