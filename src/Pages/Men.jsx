@@ -5,44 +5,75 @@ import { ProductCard } from '../Components/ProductCard';
 export const Men = () => {
   const originalArr = Products({ cat: "men" });
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState('');
+  // const [loading, setLoading] = useState(true);
+  const [categoryFilter, setCategoryFilter] = useState('');
+  const [colorFilter, setColorFilter] = useState('');
+  const [priceFilter, setPriceFilter] = useState('');
 
   useEffect(() => {
     setProducts(originalArr);
-    setLoading(false);
+    // setLoading(false);
   }, [originalArr]);
 
-  function handleFilterChange(selectedFilter) {
-    setFilter(selectedFilter);
-
-    if (selectedFilter === 'selectone') {
-      setProducts(originalArr); // Show the original data
-    } else {
-      // Filter the original data based on the selected filter
-      let filteredArr = originalArr.filter((el) => el.type === selectedFilter);
-      setProducts(filteredArr);
+  function handleFilterChange(selectedFilter, filterType) {
+    console.log("Selected filter:", selectedFilter);
+  
+    if (filterType === 'category') {
+      setCategoryFilter(selectedFilter);
+    } else if (filterType === 'color') {
+      setColorFilter(selectedFilter);
+    } else if (filterType === 'price') {
+      setPriceFilter(selectedFilter);
     }
   }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    let filteredArr = originalArr;
+
+    if (categoryFilter) {
+      filteredArr = filteredArr.filter((el) => el.catg === categoryFilter);
+    }
+
+    if (colorFilter) {
+      filteredArr = filteredArr.filter((el) => el.color === colorFilter);
+    }
+
+    if (priceFilter === 'lower') {
+      filteredArr.sort((a, b) => a.mrp - b.mrp);
+    } else if (priceFilter === 'higher') {
+      filteredArr.sort((a, b) => b.mrp - a.mrp);
+    }
+
+    setProducts([...filteredArr]); // Create a new array to trigger re-render
+  }, [categoryFilter, colorFilter, priceFilter]);
 
   return (
     <div>
-      <select onChange={(e) => handleFilterChange(e.target.value)} name="cat" id="op">
-        <option value="selectone">selectone</option>
+      <select onChange={(e) => handleFilterChange(e.target.value, 'category')} name="cat" id="category">
+        <option value="">filter by category</option>
         <option value="jeans">jeans</option>
         <option value="shirt">shirt</option>
+        <option value="polo">polo</option>
+        <option value="t-shirt">t-shirt</option>
       </select>
 
-      <div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", flexWrap: "wrap" }}>
-          {products.map((el) => {
-            return <ProductCard key={el.id} {...el} />;
-          })}
-        </div>
+      <select onChange={(e) => handleFilterChange(e.target.value, 'color')} name="col" id="color">
+        <option value="">filter by color</option>
+        <option value="Blue">Blue</option>
+        <option value="Black">Black</option>
+        <option value="White">White</option>
+      </select>
+
+      <select onChange={(e) => handleFilterChange(e.target.value, 'price')} name="price" id="price">
+        <option value="">filter by price</option>
+        <option value="lower">Lower to higher</option>
+        <option value="higher">Higher to lower</option>
+      </select>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", flexWrap: "wrap" }}>
+        {products.map((el) => {
+          return <ProductCard {...el} key={el.id} />;
+        })}
       </div>
     </div>
   );

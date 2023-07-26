@@ -3,7 +3,6 @@ import { ProductCard } from "../Components/ProductCard";
 export const Products = ({ cat }) => {
   const [dbdata, setData] = useState([]);
   const [loading,setLoading]=useState(true);
-
   const allData = async () => {
     let res = await fetch("http://localhost:3030/data");
     let resp = await res.json();

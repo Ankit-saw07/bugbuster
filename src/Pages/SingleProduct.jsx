@@ -1,37 +1,29 @@
-import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
-import { cartContext } from "../Context/CartContext";
+import { Flex, Text,Box } from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
+import { Products } from "./Products";
 
-export const SingleProduct=()=>{
-    let api="https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-tech-products";
-    let {id} = useParams();
-    let{ handleCart,handleCartVal}= useContext(cartContext);
-    const[product,setProduct]= useState([]);
-    const fetchData= async()=>{
-        let res= await fetch(`${api}/${id}`);
-        let data= await res.json();
-        setProduct(data.data);
-    }
-    useEffect(()=>{
-        fetchData();
-    },[]);
+export const SingleProduct = ({ products }) => {
+  const { id } = useParams();
+  const product = products.find((p) => p.id === id);
 
+  if (!product) {
+    return <div>Product not found.</div>;
+  }
 
-    return(
-        <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-            <div>
-                <img src={product.img} alt={product.id} />
-            </div>
-            <div>
-            <h3>{product.brand}</h3>
-            <h4>{product.category}</h4>
-            <h4>{product.price}</h4>
-            <p>{product.details}</p>
-            <button onClick={()=>{
-                handleCart(product);
-                handleCartVal();
-            }}>Add</button>
-            </div>
-        </div>
-    )
-}
+  const { type, icon, details, disc, mrp, off, catg, color } = product;
+
+  return (
+    <Flex justifyContent="space-around" alignItems="center" flexDirection="column">
+      <Box w={900} h={400}>
+        <img style={{ width: "450px", height: "650px" }} src={icon} alt={id} />
+      </Box>
+      <Box>
+        <Text>
+          <b>₹{mrp}</b> <Text display="inline" textDecoration="line-through">₹{disc}</Text>
+          {off}
+        </Text>
+        <Text>{details}</Text>
+      </Box>
+    </Flex>
+  );
+};

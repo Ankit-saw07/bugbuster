@@ -29,20 +29,19 @@ export const Home=()=>{
     autoplaySpeed: 2000,
   arrows:true,
   };
+  const breakpoints = ['0em', '30em', '48em', '62em', '80em', '96em']
+ 
     
     return(
         <><><><><><><div className={StylesProvider.featuredImageWrapper}>
-      <Image
+     <Box   breakpoints > 
+       <Image
         // width={1336}
         // height={591}
-        w={'100%'}
-        h={'auto'}
-        fill
-        priority
-        flexWrap={'wrap'}
-
+      
         src="https://cdn.pixelbin.io/v2/black-bread-289bfa/qlNgW4/original/banner/1689920815320-635_5.webp?compress=true&q=1&w=100&h=100"
         alt="img" />
+        </Box>
     </div>
       <div className="cardds">
         <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'
