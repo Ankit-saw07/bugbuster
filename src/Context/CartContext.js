@@ -13,7 +13,12 @@ export const CartContext=({children})=>{
     }
 
     const handleCart=(el)=>{
-        setCart([...cart,el])
+        setCart([...cart,el]);
+        setCartVal(cartVal+1);
+        console.log("added to cart");
+        console.log(cart,cartVal);
+        // console.log(cart[0].disc);
+        console.log(el.disc);
     }
 
     const removeCart=(id)=>{

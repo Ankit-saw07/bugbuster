@@ -9,6 +9,8 @@ import { Login } from "./Pages/Login";
 import { PrivateRoute } from "./Components/PrivateRoute";
 import { Cart } from "./Pages/Cart";
 import { Signup } from "./Pages/Signup";
+import {  AdminLogin } from "./Pages/AdminLogin";
+import { AdminPage } from "./Pages/AdminPage";
 export const AllRoutes = () => {
   return (
     <Routes>
@@ -17,6 +19,9 @@ export const AllRoutes = () => {
       <Route path="/Men" element={<Men />}></Route>
       <Route path="/Women" element={<Women />}></Route>
       <Route path="/Kid" element={<Kid />}></Route>
+      <Route path="/Adminlogin" element={<AdminLogin/>}></Route>
+      <Route path="/Cart" element={<Cart/>}></Route>
+      <Route path="/Adminpage" element={<AdminPage/>}></Route>
       <Route
         path="/product/:id"
         element={

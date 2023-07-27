@@ -9,14 +9,18 @@ export const Cart=()=>{
     const[tot,setTot]= useState(0);
 
     function handleTot(){
+        console.log("inside total function");
+        console.log(cart);
         let tp=0;
         for(let i=0;i<cart.length;i++)
         {
-            tp=tp+cart[i].price;
+            console.log("inside loop", cart[i].mrp);
+            tp=tp+cart[i].mrp;
         }
         setTot(tp);
     }
     useEffect(()=>{
+        console.log("inside cart useeffect");
         handleTot();
     },[cart]);
 

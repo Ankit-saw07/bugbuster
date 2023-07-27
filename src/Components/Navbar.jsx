@@ -325,28 +325,28 @@ export const Navbar = () => {
                 </MenuList>
               </Menu>
 
-              <Menu>
-                <MenuButton
+              {/* <Menu> */}
+                {/* <MenuButton
                   as={Button}
                   rounded={"full"}
                   variant={"link"}
                   cursor={"pointer"}
                   minW={0}
-                >
-                  <IconButton
+                > */}
+                  <Link to={"/Cart"}><IconButton
                     variant="ghost"
                     icon={<Icon as={FaShoppingCart} />}
                     aria-label="Cart"
                     mx="0.5rem"
-                  />
-                </MenuButton>
-                <MenuList>
+                  /></Link>
+                {/* </MenuButton> */}
+                {/* <MenuList>
                   <MenuItem>Link 1</MenuItem>
                   <MenuItem>Link 2</MenuItem>
                   <MenuDivider />
                   <MenuItem>Link 3</MenuItem>
                 </MenuList>
-              </Menu>
+              </Menu> */}
             </Grid>
             </Flex>
         </Flex>
