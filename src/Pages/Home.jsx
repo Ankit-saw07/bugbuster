@@ -397,7 +397,10 @@ export const Home=()=>{
         src="https://cdn.pixelbin.io/v2/black-bread-289bfa/qlNgW4/t.resize(w:1200)/cms_images/16891594731682423620Desktop.webp"
         alt="img" />
 
-        </div></>
+        </div>
+        
+        
+        </>
       
 
 

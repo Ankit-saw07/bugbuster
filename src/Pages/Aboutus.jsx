@@ -31,7 +31,7 @@ import img4 from '../Images/ankit.jpeg';
 import img5 from '../Images/shreeyam.jpeg';
 import img6 from '../Images/sai.jpg';
 
-function App() {
+function Aboutus() {
   return (
     <><><></><><div className="App">
       <Accordion>
@@ -261,5 +261,5 @@ function App() {
 }
 
 
-export default App;
+export default Aboutus;
 
