@@ -214,8 +214,7 @@ export const Navbar = () => {
                 to="/Kid"
               >
                 <b>Kid</b>
-              </Link>
-              <Link to="/Products">Products</Link>
+             </Link>
             </HStack>
           </HStack>
           <Box  mr={200}mt={10}>

@@ -76,7 +76,7 @@ export const Women = () => {
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", flexWrap: "wrap" }}>
         {products.map((el) => {
-          return <ProductCard {...el} key={el.id} /> ,<SingleProduct {...el} />
+          return <ProductCard {...el} key={el.id} />
         })}
       </div>
     </div>
