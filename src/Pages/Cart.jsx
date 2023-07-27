@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { cartContext } from "../Context/CartContext"
 import { CartCard } from "../Components/CartCard";
-import { Center } from "@chakra-ui/react";
+import { Box, Center } from "@chakra-ui/react";
 
 export const Cart=()=>{
     const{cart}= useContext(cartContext);
@@ -25,15 +25,15 @@ export const Cart=()=>{
     },[cart]);
 
     return(
-        <div>
+        <Box>
            <Center borderColor={"teal"} border={"5px"} fontSize={"2xl"} fontWeight={"bold"} >Total Amount- Rs.{tot}</Center>
-            <div>
+        
             {
                 cart.map((el)=>{
                     return <CartCard {...el}/>
                 })
             }
-            </div>
-        </div>
+            
+        </Box>
     )
 }

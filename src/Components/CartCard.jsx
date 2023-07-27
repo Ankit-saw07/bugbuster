@@ -1,6 +1,8 @@
 import { useContext } from "react"
 import { cartContext } from "../Context/CartContext"
 import { useNavigate } from "react-router-dom";
+import { Box } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/button";
 
 export const CartCard=({id,
     type,
@@ -21,7 +23,7 @@ export const CartCard=({id,
     
    
     return(
-            <div>
+            <Box>
                 <img src={icon} alt={id} />
                 <h3>{type}</h3>
                 <h4>{catg}</h4>
@@ -30,12 +32,12 @@ export const CartCard=({id,
                 <h4>{off}</h4>
                 <h4>{color}</h4>
                 <p>{details}</p>
-                <button >Add</button>
-                {/* <button onClick={nav}>Details</button> */}
-                <button onClick={()=>{
+                <Button >Add</Button>
+                {/* <Button onClick={nav}>Details</Button> */}
+                <Button onClick={()=>{
                     removeCart(id);
-                }}>Remove</button>
-            </div>
+                }}>Remove</Button>
+            </Box>
     )
         
 }
