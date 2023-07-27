@@ -18,6 +18,7 @@ export const Product=()=>{
     },[]);
 
     return(
+    
         <div>
         
             <Center fontSize={"2xl"} fontWeight={"bold"} borderRadius={"10px"} bg='red.500' h='10' color='white' margin={"20px"}>PRODUCTS</Center>

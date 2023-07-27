@@ -3,7 +3,7 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text,Wrap } from "@chakra-ui/react";
 
 export const Slider1 = () => {
   var settings = {
@@ -16,10 +16,12 @@ export const Slider1 = () => {
   return (
     <Box
       bg={"white"}
-      w={"90%"}
-      h={"40px"}
+      w={""}
+     mr={10}
       justifyContent={"center"}
       alignItems={"center"}
+      pos={'-webkit-sticky'}
+      Wrap
     >
       <Box>
         <Slider {...settings}>
