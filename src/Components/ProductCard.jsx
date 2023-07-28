@@ -34,6 +34,7 @@ export const ProductCard = ({
       off,
       catg,
       color});
+      alert("Item added to cart!");
   }
 
   function addToWish(){
