@@ -8,6 +8,7 @@ import { LoginContext } from './Context/LoginContext';
 import { CartContext } from './Context/CartContext';
 import {ChakraProvider} from "@chakra-ui/react";
 import { UserContext } from './Context/UserContext';
+import { WishContext } from './Context/WishContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,7 +20,9 @@ root.render(
     <UserContext>
     <LoginContext>
       <CartContext>
+        <WishContext>
         <App />
+        </WishContext>
     </CartContext>
     </LoginContext>
     </UserContext>
