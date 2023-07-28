@@ -72,7 +72,7 @@ export const Login=()=>{
         //     <button onClick={handleLogin}><Button colorScheme="teal" variant={"solid"}>{isLogin?"Log-Out":"Log-In"}</Button></button>
         // </div>
         // <Box w={["full","md"]}
-        <Box w={{sm: "md", md: "md", lg: "md", xl: "lg"}}
+        <Box mb={"40px"} w={{sm: "md", md: "md", lg: "md", xl: "lg"}}
         p={[8,10]}
         mt={[20, '10vh']}
         mx= 'auto'
@@ -102,13 +102,16 @@ export const Login=()=>{
         </HStack>
         <HStack w={"full"} justify={"space-between"}>
         <Button onClick={handleSubmit} rounded={"none"} colorScheme="red" w={["full","auto"]}>Login</Button>
-        <Button  variant={"link"} colorScheme="blue" onClick={gotoSignup}>Create an account.</Button>
+        
         </HStack>
+        <Button  variant={"link"} colorScheme="blue" onClick={gotoSignup}>Create an account.</Button>
         </VStack>
         </Box> : 
         <Box>
             <Heading pb={"20px"}>Logged In</Heading>
-            <Button variant={"solid"} colorScheme="red" onClick={handleLogin} >Log Out</Button>
+            <Heading m={"30px"}>Hii There!!!</Heading>
+            <Heading m={"30px"}>{user.email}</Heading>
+            <Button mb={"30px"} variant={"solid"} colorScheme="red" onClick={handleLogin} >Log Out</Button>
         </Box>
     )
 }

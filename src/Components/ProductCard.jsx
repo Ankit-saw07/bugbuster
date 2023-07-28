@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { Grid, GridItem,Box } from '@chakra-ui/react'
 import { SingleProduct } from "../Pages/SingleProduct";
 import {Link} from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { cartContext } from "../Context/CartContext";
+import { wishContext } from "../Context/WishContext";
+import { CheckIcon, StarIcon } from "@chakra-ui/icons";
 
 export const ProductCard = ({
   id,
@@ -20,6 +22,8 @@ export const ProductCard = ({
 }) => {
 
   const{handleCart}= useContext(cartContext);
+  const{handleWish, removeWish}= useContext(wishContext);
+  const[isWishAdded, setIsWishAdded]= useState(false);
   function addToCart(){
     handleCart({id,
       type,
@@ -31,6 +35,25 @@ export const ProductCard = ({
       catg,
       color});
   }
+
+  function addToWish(){
+    handleWish({id,
+      type,
+      icon,
+      details,
+      disc,
+      mrp,
+      off,
+      catg,
+      color});
+      setIsWishAdded(true);
+  }
+
+  function removeFromWish(){
+    removeWish(id);
+    setIsWishAdded(false);
+  }
+
   return (
 <Grid templateColumns='repeat(4, 1fr)' gap={4}>
 <Box w={400} letterSpacing={2}>
@@ -45,6 +68,8 @@ export const ProductCard = ({
             <b>₹{mrp}</b>  <Text  display={'inline'}  textDecoration={"line-through"}>₹{disc}</Text>{off}
           </Text>
          <Text>{details}</Text>   
+         {isWishAdded?(<Button onClick={removeFromWish} ><CheckIcon/></Button>):(<Button onClick={addToWish}><StarIcon/></Button>)}
+         
          <Button onClick={addToCart} >Add to Cart</Button>
          {/* onClick={()=>{{handlecart}} */}
          </Box>

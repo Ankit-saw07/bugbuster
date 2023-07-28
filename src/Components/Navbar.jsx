@@ -236,28 +236,28 @@ export const Navbar = () => {
               alignItems={"center"}
              w={300} h={10} mt={10}
             >
-              <Menu >
+              {/* <Menu >
                 <MenuButton
                   as={Button}
                   rounded={"full"}
                   variant={"link"}
                   cursor={"pointer"}
                   minW={0}
-                >
-                  <IconButton
+                > */}
+                <Link to={"/login"}>  <IconButton
                     variant="ghost"
                     icon={<Icon as={FaUser} />}
                     aria-label="Login"
                     mx="0.5rem"
-                  />
-                </MenuButton>
+                  /></Link>
+                {/* </MenuButton>
                 <MenuList>
                   <MenuItem>Link 1</MenuItem>
                   <MenuItem>Link 2</MenuItem>
                   <MenuDivider />
                   <MenuItem>Link 3</MenuItem>
                 </MenuList>
-              </Menu>
+              </Menu> */}
               <Menu>
                 <MenuButton
                   as={Button}
@@ -302,28 +302,28 @@ export const Navbar = () => {
                   <MenuItem>Link 3</MenuItem>
                 </MenuList>
               </Menu>
-              <Menu>
+              {/* <Menu>
                 <MenuButton
                   as={Button}
                   rounded={"full"}
                   variant={"link"}
                   cursor={"pointer"}
                   minW={0}
-                >
-                  <IconButton
+                > */}
+                 <Link to={"/wish"}> <IconButton
                     variant="ghost"
                     icon={<Icon as={FaHeart} />}
                     aria-label="Wishlist"
                     mx="0.5rem"
-                  />
-                </MenuButton>
+                  /></Link>
+                {/* </MenuButton>
                 <MenuList>
                   <MenuItem>Link 1</MenuItem>
                   <MenuItem>Link 2</MenuItem>
                   <MenuDivider />
                   <MenuItem>Link 3</MenuItem>
                 </MenuList>
-              </Menu>
+              </Menu> */}
 
               {/* <Menu> */}
                 {/* <MenuButton

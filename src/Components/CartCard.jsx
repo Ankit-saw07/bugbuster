@@ -1,8 +1,11 @@
 import { useContext } from "react"
 import { cartContext } from "../Context/CartContext"
 import { useNavigate } from "react-router-dom";
-import { Box } from "@chakra-ui/layout";
-import { Button } from "@chakra-ui/button";
+import { Box, Divider, HStack, Heading, Stack, Text, VStack } from "@chakra-ui/layout";
+import { Button, ButtonGroup } from "@chakra-ui/button";
+import { Image } from "@chakra-ui/image";
+import { Card, CardBody, CardFooter, CardHeader } from "@chakra-ui/card";
+import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
 export const CartCard=({id,
     type,
@@ -16,6 +19,7 @@ export const CartCard=({id,
     let api="https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-tech-products";
     let{handleCart,removeCart,handleCartVal}= useContext(cartContext);
     let navigate= useNavigate();
+    let quantity=0;
     
     function nav(){
         navigate(`${api}/${id}`)
@@ -23,21 +27,52 @@ export const CartCard=({id,
     
    
     return(
-            <Box>
-                <img src={icon} alt={id} />
-                <h3>{type}</h3>
-                <h4>{catg}</h4>
-                <h4>{mrp}</h4>
-                <h4>{disc}</h4>
-                <h4>{off}</h4>
-                <h4>{color}</h4>
-                <p>{details}</p>
-                <Button >Add</Button>
-                {/* <Button onClick={nav}>Details</Button> */}
-                <Button onClick={()=>{
-                    removeCart(id);
-                }}>Remove</Button>
-            </Box>
+        <Card width={"900px"}>
+        <HStack>
+        
+        
+          <Image
+            height={"400px"} 
+            src={icon}
+            alt={id}
+            borderRadius='lg'
+          />
+          <VStack ml={"100px"} w={"full"} mt='6' spacing='3'>
+            <Heading size='md'>{color} {catg}</Heading>
+            <Text>
+              {details}
+            </Text>
+            
+          </VStack>
+         
+          
+        
+        <Divider />
+        <CardFooter>
+          <ButtonGroup spacing='2'>
+            <VStack  w={"full"}>
+            <Button variant='solid' colorScheme='red'>
+              Details
+            </Button>
+            <Button variant='ghost' colorScheme='red'>
+              Remove from cart
+            </Button>
+            </VStack>
+          </ButtonGroup>
+          <VStack>
+          <HStack>
+            <Text color='blue.600' fontSize='2xl'>
+            ₹{mrp}
+            </Text>
+            <Text display={'inline'}  textDecoration={"line-through"}>{disc}</Text>
+            </HStack>
+            <Text>{off}</Text>
+            </VStack>
+            
+        </CardFooter>
+        </HStack>
+      </Card>
     )
         
 }
+
