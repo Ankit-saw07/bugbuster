@@ -32,11 +32,22 @@ export const Signup = () => {
 
     const validate=(values)=>{
         const errors={};
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        {
         if(!values.username){
             errors.username="Please set an username!";
         }
+        else if(values.username.length<3){
+            errors.username="Username must be 3 characters long!"
+        }
+        }
+        {
         if(!values.email){
             errors.email="Email is required!";
+        }
+        else if (!regex.test(values.email)) {
+            errors.email = "Please enter a valid email!";
+          }
         }
         {
         if(!values.password){
@@ -80,7 +91,7 @@ export const Signup = () => {
    
     
   return (
-    <Box w={{sm: "md", md: "md", lg: "md", xl: "lg"}}
+    <Box mb={"50px"} w={{sm: "md", md: "md", lg: "md", xl: "lg"}}
         p={[8,10]}
         mt={[20, '5vh']}
         mx= 'auto'

@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react"
 import {  wishContext } from "../Context/WishContext"
-import { Box, Button, Flex, Grid, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import { cartContext } from "../Context/CartContext";
 
 export const WishList=()=>{
@@ -12,7 +12,11 @@ export const WishList=()=>{
         handleCart(el);
     }
     
-    return(
+    return(wish.length!=0?
+      
+
+        <>
+        <Heading m={"30px"}>WISHLIST</Heading>
         
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", flexWrap: "wrap" }}>
         {wish.map((el) => {
@@ -41,6 +45,8 @@ export const WishList=()=>{
               </Grid>
         })}
       </div>
+      </>
+      : <Heading m={"50px"}> Your Wishlist Is Empty!</Heading>
         
     )
 

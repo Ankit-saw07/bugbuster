@@ -21,8 +21,13 @@ export const CartCard=({id,
     let navigate= useNavigate();
     let quantity=0;
     
-    function nav(){
-        navigate(`${api}/${id}`)
+    // function nav(){
+    //     navigate(`${api}/${id}`)
+    // }
+
+    function remove(id){
+      removeCart(id);
+      console.log("removed from cart 2");
     }
     
    
@@ -54,7 +59,7 @@ export const CartCard=({id,
             <Button variant='solid' colorScheme='red'>
               Details
             </Button>
-            <Button variant='ghost' colorScheme='red'>
+            <Button variant='ghost' colorScheme='red' onClick={()=>{remove(id)}}>
               Remove from cart
             </Button>
             </VStack>

@@ -26,6 +26,8 @@ export const CartContext=({children})=>{
             return element.id!==id
         });
         setCart(arr);
+        setCartVal(cartVal-1);
+        console.log("removed from cart1", cart);
     }
 
 
