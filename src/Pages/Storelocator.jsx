@@ -12,7 +12,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 //import 'swiper/css/swiper.css';
 
-function Localstore() {
+export const Storelocator= ()=> {
    
 
     return (
@@ -157,4 +157,4 @@ function Localstore() {
     )
 }
 
-export default Localstore
+

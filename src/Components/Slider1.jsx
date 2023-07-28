@@ -11,19 +11,25 @@ export const Slider1 = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
+    arrows:false
   };
 
   return (
     <Box
       bg={"white"}
       w={""}
-     mr={10}
       justifyContent={"center"}
       alignItems={"center"}
       pos={'-webkit-sticky'}
       Wrap
+    
+       flexWrap={"wrap"}
+        
+        top={0}
+        left={0}
+        right={0}
     >
-      <Box>
+      <Box >
         <Slider {...settings}>
           <Box mr={"150%"}>
             <Text style={{ color: "red" }}>

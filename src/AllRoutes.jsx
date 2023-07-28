@@ -12,6 +12,9 @@ import { Signup } from "./Pages/Signup";
 import {  AdminLogin } from "./Pages/AdminLogin";
 import { AdminPage } from "./Pages/AdminPage";
 import { WishList } from "./Pages/WishList";
+import {Aboutus} from "./Pages/Aboutus";
+import {Storelocator} from "./Pages/Storelocator"
+import {Productcar} from "./Pages/Productcar";
 export const AllRoutes = () => {
   return (
     <Routes>
@@ -20,17 +23,21 @@ export const AllRoutes = () => {
       <Route path="/Men" element={<Men />}></Route>
       <Route path="/Women" element={<Women />}></Route>
       <Route path="/Kid" element={<Kid />}></Route>
+      <Route path="Aboutus" element={<Aboutus/>}></Route>
+      <Route path="/Storelocator" element={<Storelocator/>}></Route>
+      <Route path="/Productcar" element={<Productcar/>} ></Route>
+      <Route path="/products/:id" element={<SingleProduct />} />
       <Route path="/Adminlogin" element={<AdminLogin/>}></Route>
       <Route path="/Cart" element={<Cart/>}></Route>
       <Route path="/Adminpage" element={<AdminPage/>}></Route>
-      <Route
+      {/* <Route
         path="/product/:id"
         element={
           <PrivateRoute>
-            <SingleProduct />
-          </PrivateRoute>
+            {/* <SingleProduct /> */}
+          {/* </PrivateRoute>
         }
-      ></Route>
+      ></Route> */} 
       <Route path="/login" element={<Login />}></Route>
       <Route path="/signup" element={<Signup />}></Route>
       <Route path="/wish" element={<WishList />}></Route>

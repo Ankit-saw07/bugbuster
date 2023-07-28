@@ -5,19 +5,15 @@ import { ProductCard } from '../Components/ProductCard';
 export const Men = () => {
   const originalArr = Products({ cat: "men" });
   const [products, setProducts] = useState([]);
-  // const [loading, setLoading] = useState(true);
   const [categoryFilter, setCategoryFilter] = useState('');
   const [colorFilter, setColorFilter] = useState('');
   const [priceFilter, setPriceFilter] = useState('');
 
   useEffect(() => {
     setProducts(originalArr);
-    // setLoading(false);
   }, [originalArr]);
 
   function handleFilterChange(selectedFilter, filterType) {
-    console.log("Selected filter:", selectedFilter);
-  
     if (filterType === 'category') {
       setCategoryFilter(selectedFilter);
     } else if (filterType === 'color') {
@@ -44,33 +40,39 @@ export const Men = () => {
       filteredArr.sort((a, b) => b.mrp - a.mrp);
     }
 
-    setProducts([...filteredArr]); // Create a new array to trigger re-render
-  }, [categoryFilter, colorFilter, priceFilter]);
+    setProducts([...filteredArr]);
+  }, [categoryFilter, colorFilter, priceFilter, originalArr]);
 
   return (
     <div>
-      <select onChange={(e) => handleFilterChange(e.target.value, 'category')} name="cat" id="category">
-        <option value="">filter by category</option>
-        <option value="jeans">jeans</option>
-        <option value="shirt">shirt</option>
-        <option value="polo">polo</option>
-        <option value="t-shirt">t-shirt</option>
-      </select>
+      <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px',width:'25%' }}>
+        <div>
+          <select onChange={(e) => handleFilterChange(e.target.value, 'category')} name="cat" id="category">
+            <option value="">Filter by category</option>
+            <option value="jeans">Jeans</option>
+            <option value="shirt">Shirt</option>
+            <option value="polo">Polo</option>
+            <option value="t-shirt">T-Shirt</option>
+          </select>
+        </div>
+        <div>
+          <select onChange={(e) => handleFilterChange(e.target.value, 'color')} name="col" id="color">
+            <option value="">Filter by color</option>
+            <option value="Blue">Blue</option>
+            <option value="Black">Black</option>
+            <option value="White">White</option>
+          </select>
+        </div>
+        <div>
+          <select onChange={(e) => handleFilterChange(e.target.value, 'price')} name="price" id="price">
+            <option value="">Sort by price</option>
+            <option value="lower">Lower to higher</option>
+            <option value="higher">Higher to lower</option>
+          </select>
+        </div>
+      </nav>
 
-      <select onChange={(e) => handleFilterChange(e.target.value, 'color')} name="col" id="color">
-        <option value="">filter by color</option>
-        <option value="Blue">Blue</option>
-        <option value="Black">Black</option>
-        <option value="White">White</option>
-      </select>
-
-      <select onChange={(e) => handleFilterChange(e.target.value, 'price')} name="price" id="price">
-        <option value="">filter by price</option>
-        <option value="lower">Lower to higher</option>
-        <option value="higher">Higher to lower</option>
-      </select>
-
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", flexWrap: "wrap" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gridGap: "20px" }}>
         {products.map((el) => {
           return <ProductCard {...el} key={el.id} />;
         })}

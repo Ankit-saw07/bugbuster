@@ -3,6 +3,7 @@ import React from "react";
 import { IconButton } from '@chakra-ui/react'
 import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram,FaTwitter } from "react-icons/fa";
+import {Link} from "react-router-dom";
 
 
 import './footer.css';
@@ -16,9 +17,9 @@ export const Footer1=()=>{
 					<div class="footer-col">
 						<h4>company</h4>
 						<ul>
-							<li><a href="https://dieselindia.com/cms/our-brands">About Diesel</a></li>
+						<li><Link to="/Aboutus" >About us</Link></li>
 							<li><a href="https://www.otbfoundation.org/">Only the Brave Foundation</a></li>
-							<li><a href="#">Store Locator</a></li>
+							<li><Link to="/Storelocator">Storelocator</Link></li>
 							
 
 						</ul>
@@ -36,8 +37,9 @@ export const Footer1=()=>{
 					<div class="footer-col">
 						<h4>Cookie Policy and Terms</h4>
 						<ul>
-							<li><a href="https://dieselindia.com/cms/legal-area/?for=privacy-policy">Privacy Policy</a></li>
-							<li><a href="https://dieselindia.com/cms/terms-of-conditions">Terms and Conditions</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Terms and Conditions</a></li>
+							<li><Link to="/AdminLOGIN"> Admin</Link></li>
 						</ul>
 					</div>
 					<div class="footer-col">
