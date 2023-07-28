@@ -143,8 +143,8 @@
                     "catg": "shirt",
                     "color": "Blue"
                 }
-            ]},
-            {
+            ],
+            
             "women": [
                 {
                     "id": 12,
@@ -300,8 +300,8 @@
                     "catg": "jeans",
                     "color": "White"
                 }
-            ]},
-            {
+            ],
+            
             "kid": [
                 {
                     "id": 26,
