@@ -135,8 +135,9 @@ export const Signup = () => {
         <Text  color="red">{formErrors.cpassword}</Text>
         <HStack w={"full"} justifyContent={"space-between"}>
         <Button onClick={handleSubmit} rounded={"none"} colorScheme="red" w={["full","auto"]}>Sign Up</Button>
-        <Button variant={"link"} colorScheme='blue' onClick={gotoLogin}>Already have an account?</Button>
         </HStack>
+        <Button variant={"link"} colorScheme='blue' onClick={gotoLogin}>Already have an account?</Button>
+
         </VStack>
         </VStack>
         </Box>

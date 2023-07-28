@@ -11,6 +11,7 @@ import { Cart } from "./Pages/Cart";
 import { Signup } from "./Pages/Signup";
 import {  AdminLogin } from "./Pages/AdminLogin";
 import { AdminPage } from "./Pages/AdminPage";
+import { WishList } from "./Pages/WishList";
 export const AllRoutes = () => {
   return (
     <Routes>
@@ -32,14 +33,7 @@ export const AllRoutes = () => {
       ></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/signup" element={<Signup />}></Route>
-      <Route
-        path="/cart"
-        element={
-          <PrivateRoute>
-            <Cart></Cart>
-          </PrivateRoute>
-        }
-      ></Route>
+      <Route path="/wish" element={<WishList />}></Route>
     </Routes>
   );
 };
