@@ -20,15 +20,15 @@ export const AllRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/Products" element={<Products />}></Route>
-      <Route path="/Men" element={<Men />}></Route>
-      <Route path="/Women" element={<Women />}></Route>
-      <Route path="/Kid" element={<Kid />}></Route>
+      <Route path="/Men" element={<PrivateRoute><Men /></PrivateRoute>}></Route>
+      <Route path="/Women" element={<PrivateRoute><Women /></PrivateRoute>}></Route>
+      <Route path="/Kid" element={<PrivateRoute><Kid /></PrivateRoute>}></Route>
       <Route path="Aboutus" element={<Aboutus/>}></Route>
       <Route path="/Storelocator" element={<Storelocator/>}></Route>
       <Route path="/Productcar" element={<Productcar/>} ></Route>
       <Route path="/products/:id" element={<SingleProduct />} />
       <Route path="/Adminlogin" element={<AdminLogin/>}></Route>
-      <Route path="/Cart" element={<Cart/>}></Route>
+      <Route path="/Cart" element={<PrivateRoute><Cart/></PrivateRoute>}></Route>
       <Route path="/Adminpage" element={<AdminPage/>}></Route>
       {/* <Route
         path="/product/:id"
@@ -40,7 +40,7 @@ export const AllRoutes = () => {
       ></Route> */} 
       <Route path="/login" element={<Login />}></Route>
       <Route path="/signup" element={<Signup />}></Route>
-      <Route path="/wish" element={<WishList />}></Route>
+      <Route path="/wish" element={<PrivateRoute><WishList /></PrivateRoute>}></Route>
     </Routes>
   );
 };

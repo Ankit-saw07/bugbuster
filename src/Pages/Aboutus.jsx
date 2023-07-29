@@ -126,7 +126,7 @@ export const Aboutus=()=> {
               <img id='photo' src={img1} alt="Jane" width="100px" />
               <div class="container">
                 <h2>SHRISTI MAHAPATRA</h2>
-                <p class="title">Team Member  (Leader)</p>
+                <p class="title">Team Member  </p>
                 <p>FRONT-END DEVELOPER</p>
                 <p>shristi111@yahoo.com</p>
                 <p><button class="button">Contact</button></p>

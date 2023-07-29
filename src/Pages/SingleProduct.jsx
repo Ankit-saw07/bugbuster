@@ -33,6 +33,7 @@ export const SingleProduct = () => {
       catg: productData.catg,
       color: productData.color,
     });
+    alert("Item added to cart!")
   }
   return (
     <Stack

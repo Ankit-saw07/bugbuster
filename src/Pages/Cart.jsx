@@ -5,11 +5,11 @@ import { Box, Button, Center, Flex, Grid, HStack, Heading, Link, Modal, ModalBod
 import { useNavigate } from "react-router-dom";
 
 export const Cart=()=>{
-    const{cart}= useContext(cartContext);
+    const{cart,setCart}= useContext(cartContext);
 
     const[tot,setTot]= useState(0);
     const[gst,setGst]= useState(0);
-    // const navigate= useNavigate();
+    let navigate= useNavigate();
 
     const uniCartId= new Set();
     // let newCart;
@@ -36,8 +36,9 @@ export const Cart=()=>{
     function checkout(){
         console.log("inside checkout");
         alert("Order Successfully Placed! Do shop again");
-        window.location.href="/Cart";
-        // return navigate("/Cart");
+        setCart([]);
+        // window.location.href="/Cart";
+        return navigate("/Cart");
     }
 
     function sendHome(){

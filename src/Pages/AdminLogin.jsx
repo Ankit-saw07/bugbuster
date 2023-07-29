@@ -1,5 +1,6 @@
 import { Box, Button, FormControl, FormLabel, HStack, Heading, Input, Text, VStack } from "@chakra-ui/react"
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 export const AdminLogin=()=>{
     const initialValue={
@@ -9,6 +10,7 @@ export const AdminLogin=()=>{
     const[user, setUser]= useState(initialValue);
     const[formErrors, setFormErrors]= useState({});
     const[isSubmit, setIsSubmit]= useState(false);
+    let navigate= useNavigate();
 
     const handleChange=(e)=>{
         const{name,value}= e.target;
@@ -40,6 +42,8 @@ export const AdminLogin=()=>{
                     if(user.password==="admin")
                     {
                         alert("Login successfull");
+                        return navigate("/Adminpage");
+
                     }
                     else{
                         alert("Invalid password");
@@ -54,7 +58,7 @@ export const AdminLogin=()=>{
     },[formErrors, isSubmit])
 
     return(
-        <Box w={{sm: "md", md: "md", lg: "md", xl: "lg"}}
+        <Box m={"50px"} w={{sm: "md", md: "md", lg: "md", xl: "lg"}}
         p={[8,10]}
         mt={[20, '10vh']}
         mx= 'auto'
