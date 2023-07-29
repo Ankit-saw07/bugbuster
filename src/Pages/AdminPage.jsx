@@ -35,21 +35,21 @@ export const AdminPage=()=>{
     }
 
     const delProd=()=>{
-        console.log("deleted");
-        console.log(dprod);
+        console.log("Deleted");
+        alert("Product deleted!");
+        setDprod(initial1);
     }
 
     const addProd=()=>{
         console.log("added");
         setProd({...prod,id: Date.now()});
         console.log(prod);
-        console.log(prod.mrp, prod.disc, prod.color);
-        // let api;
-        // if(prod.type==="M")
-        // {
-        //     api= 
-        // }
+        alert("Product added!");
+        setProd(initial);
+        
     }
+
+    
 
     return(
         <Box>
@@ -136,6 +136,7 @@ export const AdminPage=()=>{
         <Box w={{sm: "md", md: "md", lg: "md", xl: "lg"}}
         p={[8,10]}
         mt={[20, '5vh']}
+        mb={[20, '5vh']}
         mx= 'auto'
         border={["none", "1px"]}
         borderColor={['','gray.300']}

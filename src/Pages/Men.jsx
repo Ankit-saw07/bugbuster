@@ -45,7 +45,7 @@ export const Men = () => {
 
   return (
     <div>
-      <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px',width:'25%' }}>
+      <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px',width:'40%', paddingTop: "30px" }}>
         <div>
           <select onChange={(e) => handleFilterChange(e.target.value, 'category')} name="cat" id="category">
             <option value="">Filter by category</option>

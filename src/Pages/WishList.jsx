@@ -10,6 +10,7 @@ export const WishList=()=>{
 
     function addToCart(el){
         handleCart(el);
+        alert("Item added to cart!")
     }
     
     return(wish.length!=0?

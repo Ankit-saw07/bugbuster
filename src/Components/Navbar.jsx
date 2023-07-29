@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import "./Navbar.css";
 // import { Box, Flex, IconButton, Icon } from "@chakra-ui/react";
+import { useMediaQuery } from "@chakra-ui/react";
 
 import {
   Drawer,
@@ -45,6 +46,7 @@ export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
   const btnRef = React.useRef();
+  const [isMobile] = useMediaQuery("(max-width: 760px)");
   return (
     <>
       <Box id="navbar"
@@ -147,7 +149,7 @@ export const Navbar = () => {
               </Link>
             </HStack>
           </HStack>
-          <Box
+          {/* <Box
             ml={{ base: "5%", md: "0" }}
             mt={{ base: "2%", md: "10px" }}
             display={"flex"}
@@ -161,7 +163,24 @@ export const Navbar = () => {
                 alt=""
               />
             </Link>
-          </Box>
+          </Box> */}
+          {isMobile ? null : ( 
+            <Box
+              ml={{ base: "0", md: "0" }}
+              mt={{ base: "0", md: "0.625rem" }}
+              display={"flex"}
+            >
+              <Link to="/">
+                {" "}
+                <Image
+                  width="9.375rem"
+                  height="5rem"
+                  src="https://dieselindia.com/_nuxt/img/logo-mobile002.1aaed20.png"
+                  alt=""
+                />
+              </Link>
+            </Box>
+          )}
           <Box
             w={{ base: "12rem", md: "24rem" }}
             h={{ base: "auto", md: "0.625rem" }}

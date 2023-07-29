@@ -86,12 +86,12 @@ export const Productcar = () => {
 
   return (
     <Box className="container">
-      <Box bg="red" color={"white"}>
+      <Box m={"50px"} bg="red" color={"white"}>
         <h1>PRODUCT</h1>
       </Box>
       <>
         <br />
-        <Box width="300px" marginLeft={"620px"}>
+        <Box m={"30px"} width="300px" >
           <Heading bg="red" color="white">
             <Link to="/Men" style={{ textDecoration: "none", color: "white" }}>
               MAN
@@ -136,7 +136,7 @@ export const Productcar = () => {
       {/*women */}
 
       <>
-        <Box width="300px" marginLeft={"620px"}>
+        <Box m={"30px"} width="300px" >
           <Heading bg="red" color="white">
             <Link
               to="/Women"
@@ -184,7 +184,7 @@ export const Productcar = () => {
       </>
 
       {/*Kid */}
-      <Box width="300px" marginLeft={"620px"}>
+      <Box m={"30px"} width="300px" >
         <Heading bg="red" color="white">
           <Link to="/Kid" style={{ textDecoration: "none", color: "white" }}>
             {" "}
