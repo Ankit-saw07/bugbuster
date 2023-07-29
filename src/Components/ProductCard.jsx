@@ -1,14 +1,17 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  Text,
+  Box,
+  Image,
+  Grid,
+} from "@chakra-ui/react";
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
-import { Grid, GridItem,Box } from '@chakra-ui/react'
-import { SingleProduct } from "../Pages/SingleProduct";
-import {Link} from "react-router-dom";
 import { useContext, useState } from "react";
 import { cartContext } from "../Context/CartContext";
 import { wishContext } from "../Context/WishContext";
-import { CheckIcon, StarIcon } from "@chakra-ui/icons";
-
+import {FaRegHeart,FaHeart} from "react-icons/fa"
 export const ProductCard = ({
   id,
   type,
@@ -20,62 +23,83 @@ export const ProductCard = ({
   catg,
   color,
 }) => {
+  const { handleCart } = useContext(cartContext);
+  const { handleWish, removeWish } = useContext(wishContext);
+  const [isWishAdded, setIsWishAdded] = useState(false);
+  const navigate = useNavigate();
 
-  const{handleCart}= useContext(cartContext);
-  const{handleWish, removeWish}= useContext(wishContext);
-  const[isWishAdded, setIsWishAdded]= useState(false);
-  function addToCart(){
-    handleCart({id,
-      type,
-      icon,
-      details,
-      disc,
-      mrp,
-      off,
-      catg,
-      color});
-      alert("Item added to cart!");
+  function addToCart() {
+    handleCart({ id, type, icon, details, disc, mrp, off, catg, color });
+    alert("Item added to cart!");
   }
 
-  function addToWish(){
-    handleWish({id,
-      type,
-      icon,
-      details,
-      disc,
-      mrp,
-      off,
-      catg,
-      color});
-      setIsWishAdded(true);
+  function addToWish() {
+    handleWish({ id, type, icon, details, disc, mrp, off, catg, color });
+    setIsWishAdded(true);
   }
 
-  function removeFromWish(){
+  function removeFromWish() {
     removeWish(id);
     setIsWishAdded(false);
   }
 
+  const handleDetailsClick = () => {
+    const productData = {
+      id,
+      type,
+      icon,
+      details,
+      disc,
+      mrp,
+      off,
+      catg,
+      color,
+    };
+
+    navigate(`/products/${id}`, { state: { productData } });
+  };
+
   return (
-<Grid templateColumns='repeat(4, 1fr)' gap={4}>
-<Box w={400} letterSpacing={2}>
- <Flex justifyContent={'space-around'} display={'flex'} alignItems={'center'} flexDirection={'column'}>
-     <Box w={500}>
-     {/* <Link to={`/product/${id}`}>  */}
-          <img style={{ width: "450px", height: "650px" }} src={icon} alt={id} />
-        {/* </Link> */}
-       </Box>
-    <Box>
+    <Grid templateColumns="1fr" gap={4} maxW="400px" borderWidth="1px" borderRadius="lg" overflow="hidden">
+      <Image
+        src={icon}
+        alt={id}
+        height={{ base: "200px", md: "400px" }}
+        objectFit="cover"
+        onClick={handleDetailsClick}
+        cursor="pointer"
+      />
+      <Box p="4">
+        <Text fontSize="xl" fontWeight="semibold" mb="2">
+          {details}
+        </Text>
+        <Flex justifyContent="space-between" alignItems="center" flexWrap="wrap" gridGap="10px">
           <Text>
-            <b>₹{mrp}</b>  <Text  display={'inline'}  textDecoration={"line-through"}>₹{disc}</Text>{off}
+            <b>₹{mrp}</b>{" "}
+            <Text display="inline" textDecoration="line-through">
+              ₹{disc}
+            </Text>
+            {off}
           </Text>
-         <Text>{details}</Text>   
-         {isWishAdded?(<Button onClick={removeFromWish} ><CheckIcon/></Button>):(<Button onClick={addToWish}><StarIcon/></Button>)}
-         
-         <Button onClick={addToCart} >Add to Cart</Button>
-         {/* onClick={()=>{{handlecart}} */}
-         </Box>
-      </Flex>
-    </Box>
+          <Flex flexWrap="wrap" gridGap="5px">
+            <Button variant="ghost" colorScheme="red" onClick={addToCart}>
+              Add to Cart
+            </Button>
+            {isWishAdded ? (
+              <Button variant="ghost" colorScheme="red" onClick={removeFromWish}>
+                <FaHeart/>
+              </Button>
+            ) : (
+              <Button variant="ghost" colorScheme="red" onClick={addToWish}>
+                <FaRegHeart/>
+              </Button>
+            )}
+            <Button colorScheme="blue" onClick={handleDetailsClick}>
+              Details
+            </Button>
+          </Flex>
+        </Flex>
+      </Box>
     </Grid>
   );
 };

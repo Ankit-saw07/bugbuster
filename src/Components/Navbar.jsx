@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom";
 // import { Grid, textDecoration } from "@chakra-ui/react";
 import React from "react";
+import "./Navbar.css";
 // import { Box, Flex, IconButton, Icon } from "@chakra-ui/react";
+
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  GridItem,
+  useColorMode,
+} from "@chakra-ui/react";
 import {
   FaUser,
   FaSearch,
@@ -9,158 +22,9 @@ import {
   FaHeart,
   FaShoppingCart,
 } from "react-icons/fa";
-
-// export const Navbar = () => {
-//   return (
-//     <Box w={1920} h={100} bg={"#FF4500"}>
-//       <Flex
-//         as="nav"
-//         align="center"
-//         justify="space-between"
-//         wrap="nowrap"
-//         w="100%"
-//         mb={8}
-//         p={8}
-//         alignItems={'center'}
-//         bg={["primary.500", "primary.500", "transparent", "transparent"]}
-//         color={["white", "white", "primary.700", "primary.700"]}
-//       >
-//         {/* Left-side section */}
-//         <Flex
-//           align={{ base: "center", md: "flex-start" }}
-//           mb={{ base: "1rem", md: 0 }}
-//           h={"auto"}
-//           w={350}
-//           ml={"50"}
-//           // bg={'blue'}
-//           wrap={"nowrap"}
-//           display={"flex"}
-//           justify={"space-between"}
-//           alignContent={'center'}
-//         >
-//           <nav
-//             fontSize="xl"
-//             fontWeight="bold"
-//             mx={{ base: "0", md: "1rem" }}
-//             mb={{ base: "0.5rem", md: 0 }}
-//           >
-//             <Link  style={{textDecoration:'none',color:'white'}} to="/Men">Men</Link>
-//           </nav>
-//           <nav
-//             fontSize="xl"
-//             fontWeight="bold"
-//             mx={{ base: "0", md: "1rem" }}
-//             mb={{ base: "0.5rem", md: 0 }}
-//           >
-//               <Link  style={{textDecoration:'none',color:'white'}} to="/Women">Women</Link>
-//           </nav>
-//           <nav
-//             fontSize="xl"
-//             fontWeight="bold"
-//             mx={{ base: "0", md: "1rem" }}
-//             mb={{ base: "0.5rem", md: 0 }}
-//           >
-//             <Link  style={{textDecoration:'none',color:'white'}} to="/Kid">Kid</Link>
-//           </nav>
-//           <nav
-//             fontSize="xl"
-//             fontWeight="bold"
-//             mx={{ base: "0", md: "1rem" }}
-//             mb={{ base: "0.5rem", md: 0 }}
-//           >
-//             SS'22
-//           </nav>
-//           <nav
-//             fontSize="xl"
-//             fontWeight="bold"
-//             mx={{ base: "0", md: "1rem" }}
-//             mb={{ base: "0.5rem", md: 0 }}
-//           >
-//             Sale
-//           </nav>
-//           <nav
-//             fontSize="xl"
-//             fontWeight="bold"
-//             mx={{ base: "0", md: "1rem" }}
-//             mb={{ base: "0.5rem", md: 0 }}
-//           >
-//             Sale
-//           </nav>
-//           <nav
-//             fontSize="xl"
-//             fontWeight="bold"
-//             mx={{ base: "0", md: "1rem" }}
-//             mb={{ base: "0.5rem", md: 0 }}
-//           >
-//             <Link to="/Products">Products</Link>
-//           </nav>
-//         </Flex>
-
-//         {/* Middle section with the logo */}
-//         <Box
-//           mb={{ base: "1rem", md: 1 }}
-//           textAlign={{ base: "center", md: "left" }}
-//           mr={50}   border={'1px '} justifyContent={'center'}  alignItems={'center'}>
-
-//               <Link to="/">
-//                 {" "}
-//                 <img
-//                   width={"150px"}
-//                   height={"80px"}
-//                   src="https://dieselindia.com/_nuxt/img/logo-mobile002.1aaed20.png"
-//                   alt=""
-//                 />
-//               </Link>
-
-//         </Box>
-
-//         {/* Right-side section  */}
-//         <Grid
-//           templateColumns="repeat(1,1fr)"
-//           bg={"white"}
-//           templateRows="repeat(1,1fr)"
-//           alignItems={"center"}
-//         >
-//           <Flex align="center">
-//             <IconButton
-//               variant="ghost"
-//               icon={<Icon as={FaUser} />}
-//               aria-label="Login"
-//               mx="0.5rem"
-//             />
-//             <IconButton
-//               variant="ghost"
-//               icon={<Icon as={FaSearch} />}
-//               aria-label="Search"
-//               mx="1.5rem"
-//             />
-//             <IconButton
-//               variant="ghost"
-//               icon={<Icon as={FaQuestion} />}
-//               aria-label="Question"
-//               mx="0.5rem"
-//             />
-//             <IconButton
-//               variant="ghost"
-//               icon={<Icon as={FaHeart} />}
-//               aria-label="Wishlist"
-//               mx="0.5rem"
-//             />
-//             <IconButton
-//               variant="ghost"
-//               icon={<Icon as={FaShoppingCart} />}
-//               aria-label="Cart"
-//               mx="0.5rem"
-//             />
-//           </Flex>
-//         </Grid>
-//       </Flex>
-//     </Box>
-//   );
-// };
-
-import { Grid, GridItem } from "@chakra-ui/react";
 import {
+  Image,
+  Grid,
   Box,
   Flex,
   HStack,
@@ -175,23 +39,89 @@ import {
   useColorModeValue,
   Icon,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, MoonIcon } from "@chakra-ui/icons";
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const { colorMode, toggleColorMode } = useColorMode();
+  const btnRef = React.useRef();
   return (
     <>
-      <Box bg={"#FC0004"} px={4}  h={100}>
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <IconButton
-            size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={"Open Menu"}
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-          />
-          <HStack spacing={20} alignItems={"center"} ml={100} mt={10}>
+      <Box id="navbar"
+        backgroundColor={"#e31f2e"}
+        px={4}
+        h={{ base: "4.25rem", md: "6rem" }}
+        w={"100%"}
+        // flexWrap={"wrap"}
+      >
+        <Flex
+          h={{ base: 16, md: 20 }}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+          // flexWrap={'wrap'}
+          w={'full'}
+        >
+          <>
+            <IconButton
+              ref={btnRef}
+              size={"md"}
+              icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+              aria-label={"Open Menu"}
+              display={{ md: "none" }}
+              className="hide-on-mobile"
+              // onClick={isOpen ? onClose : onOpen}
+              onClick={onOpen}
+            />
+            <Drawer
+              isOpen={isOpen}
+              placement="right"
+              onClose={onClose}
+              finalFocusRef={btnRef}
+            >
+              <DrawerOverlay />
+              <DrawerContent>
+                <DrawerCloseButton />
+                <DrawerHeader>Category</DrawerHeader>
+
+                <DrawerBody>
+                  {/* <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to="/Men"
+                    onClick={onClose}
+                  >
+                    <b>Men</b>
+                  </Link>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to="/Women"
+                    onClick={onClose}
+                  >
+                    <b>Women</b>
+                  </Link>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to="/Kid"
+                    onClick={onClose}
+                  >
+                    <b>Kid</b>
+                  </Link> */}
+                </DrawerBody>
+
+                <DrawerFooter>
+                  <Button variant="outline" mr={3} onClick={onClose}>
+                    Close
+                  </Button>
+                </DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+          </>
+
+          <HStack
+            spacing={20}
+            alignItems={"center"}
+            ml={{ base: "0", md: "100px" }}
+            mt={{ base: "0.625rem", md: "2rem" }}
+          >
             <HStack
               as={"nav"}
               spacing={10}
@@ -214,141 +144,130 @@ export const Navbar = () => {
                 to="/Kid"
               >
                 <b>Kid</b>
-             </Link>
+              </Link>
             </HStack>
           </HStack>
-          <Box  mr={200}mt={10}>
+          <Box
+            ml={{ base: "5%", md: "0" }}
+            mt={{ base: "2%", md: "10px" }}
+            display={"flex"}
+          >
             <Link to="/">
               {" "}
-              <img
-                width={"150px"}
-                height={"80px"}
+              <Image
+                width="9.375rem"
+                height="5rem"
                 src="https://dieselindia.com/_nuxt/img/logo-mobile002.1aaed20.png"
                 alt=""
               />
             </Link>
           </Box>
-            <Flex display={'flex'}>
-            <Grid
-              templateColumns="repeat(5,1fr)"
-              bg={"white"}
-              templateRows="repeat(1,1fr)"
-              alignItems={"center"}
-             w={300} h={10} mt={10}
-            >
-              {/* <Menu >
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                > */}
-                <Link to={"/login"}>  <IconButton
-                    variant="ghost"
-                    icon={<Icon as={FaUser} />}
-                    aria-label="Login"
-                    mx="0.5rem"
-                  /></Link>
-                {/* </MenuButton>
-                <MenuList>
-                  <MenuItem>Link 1</MenuItem>
-                  <MenuItem>Link 2</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Link 3</MenuItem>
-                </MenuList>
-              </Menu> */}
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                >
-                  <IconButton
-                    variant="ghost"
-                    icon={<Icon as={FaSearch} />}
-                    aria-label="Search"
-                    mx="1.5rem"
-                  />
-                </MenuButton>
-                <MenuList>
-                  <MenuItem>Link 1</MenuItem>
-                  <MenuItem>Link 2</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Link 3</MenuItem>
-                </MenuList>
-              </Menu>
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                >
-                  <IconButton
-                    variant="ghost"
-                    icon={<Icon as={FaQuestion} />}
-                    aria-label="Question"
-                    mx="0.5rem"
-                  />
-                </MenuButton>
-                <MenuList>
-                  <MenuItem>Link 1</MenuItem>
-                  <MenuItem>Link 2</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Link 3</MenuItem>
-                </MenuList>
-              </Menu>
-              {/* <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                > */}
-                 <Link to={"/wish"}> <IconButton
-                    variant="ghost"
-                    icon={<Icon as={FaHeart} />}
-                    aria-label="Wishlist"
-                    mx="0.5rem"
-                  /></Link>
-                {/* </MenuButton>
-                <MenuList>
-                  <MenuItem>Link 1</MenuItem>
-                  <MenuItem>Link 2</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Link 3</MenuItem>
-                </MenuList>
-              </Menu> */}
-
-              {/* <Menu> */}
-                {/* <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                > */}
-                  <Link to={"/Cart"}><IconButton
-                    variant="ghost"
-                    icon={<Icon as={FaShoppingCart} />}
-                    aria-label="Cart"
-                    mx="0.5rem"
-                  /></Link>
-                {/* </MenuButton> */}
-                {/* <MenuList>
-                  <MenuItem>Link 1</MenuItem>
-                  <MenuItem>Link 2</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Link 3</MenuItem>
-                </MenuList>
-              </Menu> */}
-            </Grid>
+          <Box
+            w={{ base: "12rem", md: "24rem" }}
+            h={{ base: "auto", md: "0.625rem" }}
+            mt={{ base: "0", md: "0.500rem" }}
+          >
+            <Flex display={"flex"}>
+              <Grid
+                templateColumns="repeat(6,1fr)"
+                bg={"white"}
+                templateRows="repeat(1,1fr)"
+                alignItems={"center"}
+                backgroundColor={"white"}
+                border={"1px solid white"}
+              >
+                <GridItem>
+                  {" "}
+                  <Link to={"/login"}>
+                    {" "}
+                    <IconButton
+                      variant="ghost"
+                      colorScheme="black"
+                      icon={<FaUser color="black" />}
+                      aria-label="Login"
+                      mx="0.5rem"
+                    />
+                  </Link>
+                </GridItem>
+                <GridItem display={{ base: "none", md: "block" }}>
+                  <Menu>
+                    <MenuButton
+                      as={Button}
+                      rounded={"full"}
+                      variant={"link"}
+                      cursor={"pointer"}
+                      minW={0}
+                    >
+                      <IconButton
+                        variant="ghost"
+                        colorScheme="black"
+                        icon={<FaSearch color="black" />}
+                        aria-label="Search"
+                        mx="1.5rem"
+                      />
+                    </MenuButton>
+                    <MenuList>
+                      <MenuItem display={{ base: "none", md: "block" }}>
+                        <Link to="/Productcar">Products</Link>
+                      </MenuItem>
+                    </MenuList>
+                  </Menu>
+                </GridItem>
+                <GridItem display={{ base: "none", md: "block" }}>
+                  <Menu>
+                    <MenuButton
+                      as={Button}
+                      rounded={"full"}
+                      variant={"link"}
+                      cursor={"pointer"}
+                      minW={0}
+                    >
+                      <IconButton
+                        variant="ghost"
+                        colorScheme=""
+                        icon={<FaQuestion color="black" />}
+                        aria-label="Question"
+                        mx="0.5rem"
+                      />
+                    </MenuButton>
+                    <MenuList>
+                      <MenuItem>
+                        <Link to="/Aboutus">About us</Link>
+                      </MenuItem>
+                    </MenuList>
+                  </Menu>
+                </GridItem>
+                <GridItem display={{ base: "none", md: "block" }}>
+                  <Link to={"/wish"}>
+                    {" "}
+                    <IconButton
+                      variant="ghost"
+                      colorScheme="white"
+                      icon={<FaHeart color="black" />}
+                      aria-label="Wishlist"
+                      mx="0.5rem"
+                    />
+                  </Link>
+                </GridItem>
+                <GridItem>
+                  <Link to={"/Cart"}>
+                    <IconButton
+                      variant="ghost"
+                      colorScheme="white"
+                      aria-label="ShoppingCart"
+                      mx="1.1rem"
+                      icon={<FaShoppingCart color="black" />}
+                    />
+                  </Link>
+                </GridItem>
+                <GridItem>
+                  <Button onClick={toggleColorMode}>
+                    <MoonIcon  color={"black"}/>
+                  </Button>
+                </GridItem>
+              </Grid>
             </Flex>
+          </Box>
         </Flex>
       </Box>
     </>
