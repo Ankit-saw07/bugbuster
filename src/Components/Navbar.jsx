@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import "./Navbar.css";
 // import { Box, Flex, IconButton, Icon } from "@chakra-ui/react";
+import { useMediaQuery } from "@chakra-ui/react";
 
 import {
   Drawer,
@@ -44,6 +45,7 @@ import { HamburgerIcon, CloseIcon, MoonIcon } from "@chakra-ui/icons";
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+  const [isMobile] = useMediaQuery("(max-width: 760px)");
   const btnRef = React.useRef();
   return (
     <>
@@ -147,23 +149,25 @@ export const Navbar = () => {
               </Link>
             </HStack>
           </HStack>
+          {isMobile ? null : ( 
+            <Box
+              ml={{ base: "0", md: "0" }}
+              mt={{ base: "0", md: "0.625rem" }}
+              display={"flex"}
+            >
+              <Link to="/">
+                {" "}
+                <Image
+                  width="9.375rem"
+                  height="5rem"
+                  src="https://dieselindia.com/_nuxt/img/logo-mobile002.1aaed20.png"
+                  alt=""
+                />
+              </Link>
+            </Box>
+          )}
           <Box
-            ml={{ base: "5%", md: "0" }}
-            mt={{ base: "2%", md: "10px" }}
-            display={"flex"}
-          >
-            <Link to="/">
-              {" "}
-              <Image
-                width="9.375rem"
-                height="5rem"
-                src="https://dieselindia.com/_nuxt/img/logo-mobile002.1aaed20.png"
-                alt=""
-              />
-            </Link>
-          </Box>
-          <Box
-            w={{ base: "12rem", md: "24rem" }}
+            w={{ base: "14rem", md: "24rem" }}
             h={{ base: "auto", md: "0.625rem" }}
             mt={{ base: "0", md: "0.500rem" }}
           >
@@ -213,7 +217,7 @@ export const Navbar = () => {
                     </MenuList>
                   </Menu>
                 </GridItem>
-                <GridItem display={{ base: "none", md: "block" }}>
+                <GridItem >
                   <Menu>
                     <MenuButton
                       as={Button}

@@ -163,7 +163,7 @@ export const Home=()=>{
         </SimpleGrid>
 
       </div></>
-      <Box w={'80%'} h={400} alignItems={'center'} justifyContent={'space-around'} ml={150} >
+      <Box w={'80%'} h={400} alignItems={'center'} justifyContent={'space-around'} ml={150} className="car3" >
     
   
         <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(900px, 1fr))'>

@@ -9,3 +9,23 @@
       width: 100px;
     }
 }
+/* #diesel{
+  @media (max-width: 767px) {
+    display:"none";
+  }
+  @media (max-width: 400px) {
+  display: "none";
+  }
+  
+} */
+@media (max-width: 760px) {
+  .hide-diesel-logo {
+    display: none;
+  }
+}
+@media (max-width: 400px) {
+  .hide-diesel-logo{
+
+  
+  display: "none";
+  }}
