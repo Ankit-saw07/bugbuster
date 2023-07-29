@@ -34,15 +34,20 @@ git clone https://github.com/Ankit-saw07/bugbuster.git
 6. json-server --watch db.json --port 3030 (to start your json server)
 
 Steps to make your own branch and commit:-
-1. git branch day1-sai (to create your own branch)
-2. git checkout day1-sai (to move to your branch, now you can work in that branch)
+1. git branch branch-name (to create your own branch)
+2. git checkout branch-name (to move to your branch, now you can work in that branch)
 3. git branch(to see all the branches , green colour will show in which branch you are currently)
 4. To cimmit any changes-
   a. git add .
   b. git commit -m "message"
-  c. git push origin day1-sai(to push in your branch)
+  c. git push origin branch-name(to push in your branch)
 5. Incase there is any error in your changes you can move to the previous uncommited code by
   git stash
+
+## Using netlify link.
+- [Netlify App]([https://github.com/Ankit-saw07/bugbuster](https://64c4890b6d214d2e76be1f30--storied-churros-9ccf82.netlify.app/))
+- To use the link, host the db.json filr in your local host in port 3030
+- db.json file is available in the source code
 
 
 
